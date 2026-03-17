@@ -1,53 +1,61 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Brain & Meditation Visualizer 2.0</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
 <div class="app-container">
-  <h1>Neuro-Visualizer 2.0</h1>
-  
-  <div class="main-layout">
-    <div class="brain-box">
-      <div id="status-text">Status: Normal</div>
-      <div class="brain-svg-wrapper">
-         <div id="brain-core"></div>
-      </div>
+    <h1>Neuro-Visualizer 2.0</h1>
+    
+    <div class="main-layout">
+        <div class="brain-box">
+            <div id="status-text">Status: Gözlənilir...</div>
+            <div class="brain-svg-wrapper">
+                <svg viewBox="0 0 200 150" width="300">
+                    <path d="M50,80 Q30,50 70,20 T130,20 T150,80 T100,130 Z" fill="#2d3748" stroke="#4a5568" stroke-width="2"/>
+                    <circle id="v-cortex" cx="70" cy="40" r="12" fill="#3b82f6" opacity="0.4">
+                        <animate attributeName="r" values="12;14;12" dur="3s" repeatCount="indefinite" />
+                    </circle>
+                    <circle id="v-amygdala" cx="130" cy="80" r="8" fill="#ef4444" opacity="0.8">
+                        <animate id="stress-pulse" attributeName="r" values="8;11;8" dur="1s" repeatCount="indefinite" />
+                    </circle>
+                    <g id="brain-waves" opacity="0">
+                        <circle cx="100" cy="75" r="70" fill="none" stroke="#00ffcc" stroke-width="1" stroke-dasharray="5,5">
+                            <animate attributeName="r" values="70;90;70" dur="4s" repeatCount="indefinite" />
+                        </circle>
+                    </g>
+                </svg>
+            </div>
+        </div>
+
+        <div class="chart-box">
+            <canvas id="hormoneChart"></canvas>
+        </div>
     </div>
 
-    <div class="chart-box">
-      <canvas id="hormoneChart"></canvas>
+    <div class="controls">
+        <div class="slider-group">
+            <label>Meditasiya Seansı: <span id="minutes">0</span> dəq</label>
+            <input type="range" id="slider" min="0" max="60" value="0">
+        </div>
+        <div class="slider-group">
+            <label>Yuxu saatı: <span id="sleep-hours">8</span> saat</label>
+            <input type="range" id="sleep-slider" min="3" max="12" value="8">
+        </div>
     </div>
-  </div>
 
-  <div class="controls">
-    <label>Meditasiya Seansı: <span id="minutes">0</span> dəq</label>
-    <input type="range" id="slider" min="0" max="60" value="0">
-  </div>
+    <div id="info-panel" class="info-box">
+        <h3>Science Insights</h3>
+        <p id="fact-text">Məlumat yüklənir...</p>
+        <small id="source-text"></small>
+    </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<div class="controls">
-  <label>Yuxu saatı: <span id="sleep-hours">8</span> saat</label>
-  <input type="range" id="sleep-slider" min="3" max="12" value="8">
-</div>
-<div class="brain-svg-wrapper">
-  <svg viewBox="0 0 200 150" width="300">
-    <path d="M50,80 Q30,50 70,20 T130,20 T150,80 T100,130 Z" fill="#2d3748" stroke="#4a5568" stroke-width="2"/>
-    
-    <circle id="v-cortex" cx="70" cy="40" r="12" fill="#3b82f6" opacity="0.4">
-      <animate attributeName="r" values="12;14;12" dur="3s" repeatCount="indefinite" />
-    </circle>
-    
-    <circle id="v-amygdala" cx="130" cy="80" r="8" fill="#ef4444" opacity="0.8">
-      <animate id="stress-pulse" attributeName="r" values="8;11;8" dur="1s" repeatCount="indefinite" />
-    </circle>
-  </svg>
-</div>
-<div id="info-panel" class="info-box">
-  <h3>Science Insights</h3>
-  <p id="fact-text">Meditasiyaya başlamaq üçün slideri hərəkət etdirin...</p>
-  <small id="source-text"></small>
-</div>
-<g id="brain-waves" opacity="0">
-  <circle cx="100" cy="75" r="70" fill="none" stroke="#00ffcc" stroke-width="1" stroke-dasharray="5,5">
-    <animate attributeName="r" values="70;90;70" dur="4s" repeatCount="indefinite" />
-  </circle>
-  <circle cx="100" cy="75" r="80" fill="none" stroke="#3b82f6" stroke-width="0.5" opacity="0.5">
-    <animate attributeName="r" values="80;100;80" dur="6s" repeatCount="indefinite" />
-  </circle>
-</g>
+<script src="script.js"></script>
+</body>
+</html>
