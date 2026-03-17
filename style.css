@@ -1,0 +1,91 @@
+body {
+  background: #0b0e14;
+  color: #00ffcc;
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.app-container {
+  width: 90%;
+  max-width: 1000px;
+  text-align: center;
+}
+
+.main-layout {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.brain-box, .chart-box {
+  background: #161b22;
+  padding: 20px;
+  border-radius: 15px;
+  border: 1px solid #30363d;
+  width: 400px;
+  height: 300px;
+}
+
+#brain-core {
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, #00ffcc, #005544);
+  border-radius: 50%;
+  margin: 50px auto;
+  box-shadow: 0 0 50px #00ffcc;
+  transition: 0.5s ease;
+}
+
+.controls {
+  margin-top: 40px;
+  background: #161b22;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+input[type=range] {
+  width: 100%;
+  accent-color: #00ffcc;
+}
+const sleepSlider = document.getElementById('sleep-slider');
+const sleepText = document.getElementById('sleep-hours');
+
+// Hər iki slider təsir etməlidir
+function updateData() {
+    let medTime = parseInt(slider.value);
+    let sleepTime = parseInt(sleepSlider.value);
+    
+    minutesText.innerHTML = medTime;
+    sleepText.innerHTML = sleepTime;
+
+    // Yuxu azdırsa stress (kortizol) daha yüksək olur
+    let baseStress = 100 - (sleepTime * 8); 
+    let cortisol = baseStress - (medTime * 0.5);
+    
+    // Kortizol mənfi ola bilməz
+    cortisol = Math.max(0, cortisol);
+
+    hormoneChart.data.datasets[0].data = [cortisol, 100 - cortisol];
+    hormoneChart.update();
+}
+
+slider.oninput = updateData;
+sleepSlider.oninput = updateData;
+.info-box {
+  margin-top: 20px;
+  background: rgba(0, 255, 204, 0.1);
+  border-left: 4px solid #00ffcc;
+  padding: 15px;
+  text-align: left;
+  border-radius: 0 10px 10px 0;
+}
+#source-text {
+  color: #888;
+  display: block;
+  margin-top: 10px;
+  font-style: italic;
+}
