@@ -4,7 +4,6 @@
 An interactive web application that visualizes the impact of meditation and sleep on the human brain and hormonal balance.
 
 ## 🚀 Live Demo
-[Bura GitHub Pages linkini yapışdır]
 
 ## 🌟 Key Features
 - **Dynamic Brain Visualization:** Interactive SVG brain regions that react to stress levels.
@@ -19,3 +18,4 @@ An interactive web application that visualizes the impact of meditation and slee
 
 ## 💡 Why this project?
 As a Biology graduate transitioning into Data Analytics, I built this tool to demonstrate how complex physiological data can be transformed into intuitive, actionable visual insights.
+https://vafagarayeva.github.io/brain-meditation-visualizer/ 
